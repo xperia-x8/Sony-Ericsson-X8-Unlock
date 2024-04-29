@@ -1,0 +1,53 @@
+Как проверить можно ли разблокировать:
+1. Выключаем телефон
+2. Запускаем S1tool, нажимаем кнопку "IDENTIFY"
+3. Подключаем телефон с зажатой кнопкой "назад"
+4. Смотрим лог:
+
+9/9/2011 21:41:44 Welcome to S1 identify tool
+9/9/2011 21:45:13  
+9/9/2011 21:45:13 TO CONNECT NEXT PHONES
+9/9/2011 21:45:13 X10 Xperia,E10 Xperia Mini,E15 Xperia X8,U20 Xperia Mini Pro
+9/9/2011 21:45:13 LT15 Xperia ARC,MT15 Xperia NEO,R800 Xperia PLAY
+9/9/2011 21:45:13 PRESS AND HOLD "BACK" BUTTON...
+9/9/2011 21:45:13  
+9/9/2011 21:45:13 PLEASE ATTACH TURNED OFF PHONE NOW
+
+Если видим такую надпись в конце: SEMC SIMLOCK CERTIFICATE - загрузчик можно разблокировать.
+Если вместо SEMC SIMLOCK CERTIFICATE видим NOT RECOGNIZED SIMLOCK CERTIFICATE, то разблокировать загрузчик невозможно и лучше не пытаться, телефон будет не пригодным к использованию.
+
+-------------------------------------------------------
+
+Действия далее:
+1. Скачайте архив msm7227.7z ( 3.75 МБ )
+2. Распакуйте архив на компьютере.
+3. Включите USB отладку (Настройки-Приложения-Разработка-Отладка по USB).
+4. Подсоедините смартфон к ПК.
+5. Этот шаг зависит от наличия SIM-lock (залочен ли телефон под одну сим карту!?).
+	- Если Ваш телефон не имеет SIM-lock:
+		Запустите msm7227_semc.cmd и нажмите любую кнопку для запуска процесса разблокировки.
+	- Если ваш телефон имеет SIM-Lock и разблокирован через SETool:
+		Запускаем msm7227_setool2.cmd, для начала разблокировки жмем любую кнопку.
+Лог должен быть примерно таким:
+
+process requires standard 2.x android firmware.
+Press any key to continue . . .
+Getting ROOT rights.
+1743 KB/s (585731 bytes in 0.328s)
+error: protocol fault (no status)
+Waiting ...
+Removing NAND MPU restrictions via SEMC backdoor. Permanent. Require ROOT rights.
+192 KB/s (3087 bytes in 0.015s)
+success
+Waiting ...
+Getting ROOT rights.
+Waiting ...
+Writing patched semcboot. Two step process
+First, we need get access to semcboot area
+504 KB/s (8064 bytes in 0.015s)
+Second, we need to write semcboot;)
+1130 KB/s (596916 bytes in 0.515s)
+successfully wrote 0003ff00
+Press any key to continue . . .
+
+6. Нажимаем любую кнопку для завершения скрипта и отсоеденяем смартфон от компьютера. Поздравляю, Вы сделали это!
